@@ -51,7 +51,7 @@ class LoginFragment : Fragment(), LoginView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews(view)
-        onRegisterInit()
+        onActionsInit()
     }
 
     private fun initViews(view: View) {
@@ -61,10 +61,11 @@ class LoginFragment : Fragment(), LoginView {
         pbDog = view.findViewById(R.id.pb_dog)
     }
 
-    private fun onRegisterInit() {
+    private fun onActionsInit() {
         btLogin?.setOnClickListener {
             loginPresenter?.login(etLogin?.text.toString(), etPassword?.text.toString())
         }
+        pbDog?.stopProgress()
     }
 
     override fun onLoginResult(isSuccess: Boolean, login: String, token: String) {
