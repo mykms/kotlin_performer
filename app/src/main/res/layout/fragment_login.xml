@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+	<LinearLayout
+		android:id="@+id/ll_fields"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center"
+		android:padding="16dp"
+		android:orientation="vertical">
+
+		<EditText
+			android:id="@+id/et_login"
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:inputType="phone"
+			android:hint="Телефон"
+			android:text=""
+			android:ems="10"/>
+
+		<EditText
+			android:id="@+id/et_password"
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:inputType="textPassword"
+			android:hint="Пароль"
+			android:text=""
+			android:ems="10"/>
+		<Button
+			android:id="@+id/bt_login"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Войти"/>
+	</LinearLayout>
+
+	<ru.dogwalk.progressbardog.ProgressBarDog
+		android:id="@+id/pb_dog"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent" />
+</FrameLayout>
