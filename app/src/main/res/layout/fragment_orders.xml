@@ -3,10 +3,10 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context=".UI.Fragment.ChatFragment">
+             tools:context=".UI.Fragment.OrdersFragment">
 
-	<TextView
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:text="Чат"/>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Заказы"/>
 </FrameLayout>
