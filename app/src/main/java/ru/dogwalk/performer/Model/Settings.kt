@@ -24,4 +24,8 @@ class Settings(private val context: Context) {
     fun getToken(): String? {
         return pref.getString(KEY_TOKEN, "")
     }
+
+    fun logout() {
+        saveAuthData("", "")
+    }
 }

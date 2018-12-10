@@ -1,14 +1,31 @@
 package ru.dogwalk.performer.UI.Fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import android.widget.Button
+import ru.dogwalk.performer.Model.Settings
 import ru.dogwalk.performer.R
 
-class ProfileFragment : Fragment() {
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+class ProfileFragment : BaseFragment() {
+    private var btLogout: Button? = null
+
+    override fun getArgs(args: Bundle?) {
+        // nothing
+    }
+
+    override fun setResourceLayout(): Int {
+        return R.layout.fragment_profile
+    }
+
+    override fun initComponents(view: View) {
+        initViews(view)
+    }
+
+    private fun initViews(view: View) {
+        btLogout = view.findViewById(R.id.bt_logout)
+        btLogout?.setOnClickListener {
+            Settings(view.context).logout()
+            super.setBottomPanelVisibility(false)
+        }
     }
 }

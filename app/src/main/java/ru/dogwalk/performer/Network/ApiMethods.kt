@@ -11,6 +11,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
 import ru.dogwalk.performer.BuildConfig
+import ru.dogwalk.performer.Model.Order
 import ru.dogwalk.performer.Model.Sessions
 import ru.dogwalk.performer.Model.Settings
 
@@ -59,8 +60,8 @@ interface ApiMethods {
         }
     }
 
-//    @GET("user/{groupId}")
-//    fun test(@Path("groupId") groupId: Long?): Call<Any>
+    @GET("orders/{type}")
+    fun getOrders(@Path("type") type: String?): Call<List<Order>>
 
     @POST("user/sessions")
     fun login(@Query("phone") phone: String, @Query("password") password: String): Call<Sessions>
