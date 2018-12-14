@@ -9,19 +9,27 @@ import android.view.View
 import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.calendar_day.view.*
 import java.util.*
+import kotlin.collections.ArrayList
 
 class CalendarDay(context: Context?, attrs: AttributeSet?) : LinearLayout(context, attrs) {
     private var isSelectedDay = false
     private var isTodayDay = false
     private var dayValue = 0
     private var dayCalendar = Calendar.getInstance()
+    private var dayClickListener: CalendarDayListener? = null
+    private var position = ArrayList<Int>(2)
 
     init {
-        val view = LayoutInflater.from(getContext()).inflate(R.layout.calendar_day, this)
+        LayoutInflater.from(getContext()).inflate(R.layout.calendar_day, this)
         tv_day.text = dayValue.toString()
         cl_group.setOnClickListener {
             setSelectedDay(true)
+            dayClickListener?.onDaySelected(dayCalendar, position)
         }
+    }
+
+    internal fun setDayClickListener(clickListener: CalendarDayListener) {
+        this.dayClickListener = clickListener
     }
 
     fun setSelectedDay(isSelected: Boolean) {
@@ -38,8 +46,13 @@ class CalendarDay(context: Context?, attrs: AttributeSet?) : LinearLayout(contex
         val dateValue = day.get(Calendar.DAY_OF_MONTH)
         val dayCorrect = if (dateValue <= 0) 1 else if (dateValue > 31) 31 else dateValue
         tv_day.text = dayCorrect.toString()
-        dayCalendar = day
+        dayCalendar.time = Date(day.timeInMillis)
         dayValue = dayCorrect
+    }
+
+    fun setPosition(weekPosition: Int, dayPosition: Int) {
+        position.add(weekPosition)
+        position.add(dayPosition)
     }
 
     fun setDefaultDay() {

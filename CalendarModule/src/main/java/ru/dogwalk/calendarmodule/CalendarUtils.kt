@@ -2,7 +2,7 @@ package ru.dogwalk.calendarmodule
 
 import java.util.*
 
-class CalendarUtils {
+internal class CalendarUtils {
     companion object {
         fun isSameMonth(c1: Calendar?, c2: Calendar?): Boolean {
             return if (c1 == null || c2 == null) false else {
