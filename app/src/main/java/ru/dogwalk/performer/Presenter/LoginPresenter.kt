@@ -1,6 +1,6 @@
 package ru.dogwalk.performer.Presenter
 
-import ru.dogwalk.performer.Model.Sessions
+import ru.dogwalk.performer.Model.Client
 import ru.dogwalk.performer.Network.ApiMethods
 import ru.dogwalk.performer.View.LoginView
 
@@ -11,13 +11,8 @@ class LoginPresenter constructor(private val view: LoginView, private val apiMet
         req.enqueue {
             onResponse = { response ->
                 if (response.code() in 200..299) {
-                    val sessions: Sessions? = response.body()
-                    val res = sessions?.isSuccess() ?: false
-                    if (res) {
-                        view.onLoginResult(res, sessions?.phone!!, sessions.authentication_token)
-                    } else {
-                        view.onError("Не удалось войти, попробуйте позже!")
-                    }
+                    val client: Client? = response.body()
+                    view.onLoginResult(client?.phone!!, client.authentication_token)
                 } else {
                     view.onError("Запрос прошел, но есть ошибка ${response.code()}")
                 }

@@ -3,72 +3,63 @@ package ru.dogwalk.performer.UI.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.activity_main.*
 import ru.dogwalk.performer.Model.Settings
 import ru.dogwalk.performer.R
 import ru.dogwalk.performer.UI.CallBackView.HostActivityListener
 
 class MainActivity : AppCompatActivity(), HostActivityListener {
-    private val CONTAINER: Int = R.id.fl_container
-    private var navController: NavController? = null
-    private var bottomPanel: BottomNavigationView? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        navController = Navigation.findNavController(this, R.id.nav_host_fragment)
-
-        bottomPanel = findViewById(R.id.bottom_navigation)
-        bottomPanel?.setOnNavigationItemSelectedListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.item_order -> {
-                    navController!!.navigate(R.id.ordersFragment)
-                    supportActionBar?.title = "Заказы"
-                    true
-                }
-                R.id.item_calendar -> {
-                    navController!!.navigate(R.id.calendarFragment)
-                    supportActionBar?.title = "Расписание"
-                    true
-                }
-                R.id.item_chat -> {
-                    navController!!.navigate(R.id.chatFragment)
-                    supportActionBar?.title = "Связаться"
-                    true
-                }
-                R.id.item_profile -> {
-                    navController!!.navigate(R.id.profileFragment)
-                    supportActionBar?.title = "Профиль"
-                    true
-                }
-                else -> {
-                    true
-                }
-            }
-        }
-        val settings = Settings(applicationContext)
-        val isLoginSuccess = settings.getLogin()?.isNotEmpty()!!
-        showBottomPanel(isLoginSuccess)
+        bottom_navigation.setupWithNavController(nav_host_fragment.findNavController())
+        showBottomPanel(!Settings(applicationContext).getLogin().isNullOrEmpty())
     }
 
     override fun showBottomPanel(isShow: Boolean) {
-        if (isShow) {
-            bottomPanel?.visibility = View.VISIBLE
-            bottomPanel?.selectedItemId = R.id.item_order
-            navController!!.navigate(R.id.ordersFragment)
-            supportActionBar?.title = "Заказы"
-        } else {
-            bottomPanel?.visibility = View.GONE
-            navController!!.navigate(R.id.loginFragment)
-            supportActionBar?.title = "Авторизация"
-        }
+        bottom_navigation?.visibility = if (isShow) View.VISIBLE else View.GONE
+        nav_host_fragment.findNavController().navigate(if (isShow) R.id.ordersFragment else R.id.loginFragment)
+        supportActionBar?.title = if (isShow) "Заказы" else "Авторизация"
     }
 
     override fun onMessage(message: String) {
         Snackbar.make(window.decorView, message, Snackbar.LENGTH_SHORT)
             .show()
     }
+
+//    override fun onSupportNavigateUp(): Boolean {
+//        setVisibilityBackButton(false)
+//        navController?.navigateUp()
+//        return super.onSupportNavigateUp()
+//    }
+//
+//    override fun onBackPressed() {
+//        setVisibilityBackButton(false)
+//        navController?.navigateUp()
+//    }
+//
+
+
+//    override fun navigateTo(resourceId: Int, args: Bundle?) {
+//        when(resourceId) {
+//            R.id.orderDetailFragment -> {
+//                navController!!.navigate(R.id.orderDetailFragment)
+//                val id = args?.getLong(Constants.EXTRA_ORDER_ID, 0L)
+//                supportActionBar?.title = "Заказ № $id"
+//                setVisibilityBackButton(true)
+//            }
+//            else -> {
+//                navController!!.navigate(R.id.ordersFragment)
+//                supportActionBar?.title = "Заказы"
+//            }
+//        }
+//    }
+//
+//    private fun setVisibilityBackButton(isVisible: Boolean) {
+//        supportActionBar?.setDisplayHomeAsUpEnabled(isVisible)
+//        supportActionBar?.setDisplayShowHomeEnabled(isVisible)
+//    }
 }

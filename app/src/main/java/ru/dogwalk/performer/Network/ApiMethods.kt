@@ -12,16 +12,17 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
 import ru.dogwalk.performer.BuildConfig
 import ru.dogwalk.performer.Model.Order
-import ru.dogwalk.performer.Model.Sessions
+import ru.dogwalk.performer.Model.Client
 import ru.dogwalk.performer.Model.Settings
 
 interface ApiMethods {
     companion object {
-        private val BASE_URL: String = "https://test-api.new-staging.dog-walk.ru/v1/"
+        const val BASE_URL = "https://uapi.new-staging.dog-walk.ru/"
+        private const val VERSION: String = "v2/"
 
         fun getInstance(context: Context): ApiMethods {
             val retrofitBuilder: Retrofit.Builder = Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(BASE_URL + VERSION)
                 .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
                 .client(getOkHttpClient(context))
 
@@ -60,12 +61,12 @@ interface ApiMethods {
         }
     }
 
-    @GET("orders/{type}")
-    fun getOrders(@Path("type") type: String?): Call<List<Order>>
-
     @POST("user/sessions")
-    fun login(@Query("phone") phone: String, @Query("password") password: String): Call<Sessions>
+    fun login(@Query("phone") phone: String, @Query("password") password: String): Call<Client>
 
     @GET("user/sessions")
-    fun userInfo(): Call<Sessions>
+    fun getUserInfo(): Call<Client>
+
+    @GET("user/orders")
+    fun getOrders(@Query("hot") hot: Boolean): Call<List<Order>>
 }

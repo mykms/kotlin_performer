@@ -1,5 +1,7 @@
 package ru.dogwalk.performer.UI.Holder
 
+import android.graphics.drawable.Drawable
+import android.os.Build
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -27,11 +29,29 @@ class OrderHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     }
 
     fun setData(order: Order) {
+        val img = if (order.is_like) {
+            getImg(R.drawable.vector_ic_heart_like_circle)
+        } else {
+            getImg(R.drawable.vector_ic_dog)
+        }
+        ivLogo?.setImageDrawable(img)
         tvPrice?.text = order.price.toString()
         tvTitle?.text = order.title
-        tvSubTitle?.text = order.sub_title
-        tvDateTime?.text = order.date_time
-        tvAddress?.text = order.address
-        tvAddress?.text = order.metro
+        tvSubTitle?.text = order.subtitle
+        tvDateTime?.text = order.starting_at
+        tvAddress?.text = order.client.client_street
+        tvMetro?.text = order.client.client_metro
+    }
+
+    fun setClickListener(clickListener: View.OnClickListener) {
+        itemView.setOnClickListener(clickListener)
+    }
+
+    private fun getImg(imgResource: Int) : Drawable {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            itemView.resources.getDrawable(imgResource, null)
+        } else {
+            itemView.resources.getDrawable(imgResource)
+        }
     }
 }

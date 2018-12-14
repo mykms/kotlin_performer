@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Dog-Walk Исполнитель</string>
+    <string name="orders_fragment_title">Заказы</string>
+    <string name="calendar_fragment_title">Расписание</string>
+    <string name="chat_fragment_title">Связаться</string>
+    <string name="profile_fragment_title">Профиль</string>
 </resources>

@@ -59,12 +59,14 @@ class LoginFragment : BaseFragment(), LoginView {
         }
     }
 
-    override fun onLoginResult(isSuccess: Boolean, login: String, token: String) {
+    override fun onLoginResult(login: String, token: String) {
         val settings = Settings(context!!)
-        settings.saveAuthData(login, token)
-        if (isSuccess) {
+        if (login.isNotEmpty()) {
+            settings.saveAuthData(login, token)
             super.setBottomPanelVisibility(true)
             onError("Успешно вошли как: $login с токеном $token")
+        } else {
+            onError("При входе возникли ошибки, попробуйте позже")
         }
     }
 }

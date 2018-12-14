@@ -37,6 +37,10 @@ abstract class BaseFragment : Fragment() {
         return view
     }
 
+    fun navigateTo(resourceFragment: Int, args: Bundle?) {
+//        activityListener?.navigateTo(resourceFragment, args)
+    }
+
     fun onMessage(message: String) {
         activityListener?.onMessage(message)
     }
