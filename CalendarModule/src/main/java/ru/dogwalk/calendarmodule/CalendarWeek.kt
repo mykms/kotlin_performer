@@ -44,18 +44,6 @@ class CalendarWeek(context: Context?, attrs: AttributeSet?) : ConstraintLayout(c
         days[indexDay] = day
     }
 
-    fun setDefaultWeek(startDay: Int) {
-        var dayInt = startDay
-        for ((index, value) in days.withIndex()) {
-            value.setSelectedDay(false)
-            value.setActiveDay(true)
-            value.setActivityDay(false)
-            value.setCurrentDay(false)
-            value.setDay(dayInt++)
-            days[index] = value
-        }
-    }
-
     fun setSelectedDay(indexDay: Int) {
         val day = days[indexDay]
         day.setSelectedDay(true)
