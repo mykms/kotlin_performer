@@ -11,7 +11,7 @@
 	      android:icon="@drawable/vector_ic_calendar"
 	      app:showAsAction="ifRoom|withText"/>
 
-	<item android:id="@id/chatFragment"
+	<item android:id="@id/newsFragment"
 	      android:title="@string/chat_fragment_title"
 	      android:icon="@drawable/vector_ic_chat"
 	      app:showAsAction="ifRoom|withText"/>

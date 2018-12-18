@@ -44,9 +44,6 @@ dependencies {
     implementation 'android.arch.navigation:navigation-fragment-ktx:1.0.0-alpha08'
     implementation 'android.arch.navigation:navigation-ui-ktx:1.0.0-alpha08'
 
-//    implementation "android.arch.navigation:navigation-fragment:$navLib"
-//    implementation "android.arch.navigation:navigation-ui:$navLib"
-
     implementation "com.squareup.retrofit2:retrofit:$retrofitLib"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitLib"
     implementation "com.squareup.okhttp3:logging-interceptor:3.10.0"
@@ -59,5 +56,4 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1-beta01'
 
     implementation project(path: ':DogProgressBar')
-    implementation project(path: ':CalendarModule')
 }

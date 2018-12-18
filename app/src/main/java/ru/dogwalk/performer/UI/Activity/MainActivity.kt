@@ -3,10 +3,14 @@ package ru.dogwalk.performer.UI.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
+import ru.dogwalk.performer.Common.Constants
 import ru.dogwalk.performer.Model.Settings
 import ru.dogwalk.performer.R
 import ru.dogwalk.performer.UI.CallBackView.HostActivityListener

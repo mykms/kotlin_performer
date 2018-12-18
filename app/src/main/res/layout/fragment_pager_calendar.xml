@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".CalendarPagerFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_title_days"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+                android:id="@+id/tv_d1"
+                style="@style/DayOfTheWeekTitle"
+                android:text="пн"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/tv_d2"/>
+
+        <TextView
+                android:id="@+id/tv_d2"
+                style="@style/DayOfTheWeekTitle"
+                app:layout_constraintLeft_toRightOf="@id/tv_d1"
+                app:layout_constraintRight_toLeftOf="@+id/tv_d3"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="вт"/>
+
+        <TextView
+                android:id="@+id/tv_d3"
+                style="@style/DayOfTheWeekTitle"
+                app:layout_constraintLeft_toRightOf="@id/tv_d2"
+                app:layout_constraintRight_toLeftOf="@+id/tv_d4"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="ср"/>
+
+        <TextView
+                android:id="@+id/tv_d4"
+                style="@style/DayOfTheWeekTitle"
+                app:layout_constraintLeft_toRightOf="@id/tv_d3"
+                app:layout_constraintRight_toLeftOf="@+id/tv_d5"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="чт"/>
+
+        <TextView
+                android:id="@+id/tv_d5"
+                style="@style/DayOfTheWeekTitle"
+                app:layout_constraintLeft_toRightOf="@id/tv_d4"
+                app:layout_constraintRight_toLeftOf="@+id/tv_d6"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="пт"/>
+
+        <TextView
+                android:id="@+id/tv_d6"
+                style="@style/DayOfTheWeekTitle"
+                app:layout_constraintLeft_toRightOf="@id/tv_d5"
+                app:layout_constraintRight_toLeftOf="@+id/tv_d7"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="сб"/>
+
+        <TextView
+                android:id="@+id/tv_d7"
+                style="@style/DayOfTheWeekTitle"
+                app:layout_constraintLeft_toRightOf="@id/tv_d6"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="вс"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.viewpager.widget.ViewPager
+            android:id="@+id/vp_calendar_pager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/cl_title_days"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

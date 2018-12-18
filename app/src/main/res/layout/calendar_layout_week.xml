@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <ru.dogwalk.performer.UI.Widget.CalendarDay
+            android:id="@+id/tv_d1"
+            style="@style/BaseSize"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/tv_d2"/>
+
+    <ru.dogwalk.performer.UI.Widget.CalendarDay
+            android:id="@+id/tv_d2"
+            style="@style/BaseSize"
+            app:layout_constraintLeft_toRightOf="@id/tv_d1"
+            app:layout_constraintRight_toLeftOf="@+id/tv_d3"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="вт"/>
+
+    <ru.dogwalk.performer.UI.Widget.CalendarDay
+            android:id="@+id/tv_d3"
+            style="@style/BaseSize"
+            app:layout_constraintLeft_toRightOf="@id/tv_d2"
+            app:layout_constraintRight_toLeftOf="@+id/tv_d4"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="ср"/>
+
+    <ru.dogwalk.performer.UI.Widget.CalendarDay
+            android:id="@+id/tv_d4"
+            style="@style/BaseSize"
+            app:layout_constraintLeft_toRightOf="@id/tv_d3"
+            app:layout_constraintRight_toLeftOf="@+id/tv_d5"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="чт"/>
+
+    <ru.dogwalk.performer.UI.Widget.CalendarDay
+            android:id="@+id/tv_d5"
+            style="@style/BaseSize"
+            app:layout_constraintLeft_toRightOf="@id/tv_d4"
+            app:layout_constraintRight_toLeftOf="@+id/tv_d6"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="пт"/>
+
+    <ru.dogwalk.performer.UI.Widget.CalendarDay
+            android:id="@+id/tv_d6"
+            style="@style/BaseSize"
+            app:layout_constraintLeft_toRightOf="@id/tv_d5"
+            app:layout_constraintRight_toLeftOf="@+id/tv_d7"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="сб"/>
+
+    <ru.dogwalk.performer.UI.Widget.CalendarDay
+            android:id="@+id/tv_d7"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            style="@style/BaseSize"
+            android:text="вс"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/tv_d6"
+            app:layout_constraintTop_toTopOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

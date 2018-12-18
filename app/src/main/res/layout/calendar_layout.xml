@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <ru.dogwalk.performer.UI.Widget.CalendarWeek
+            android:id="@+id/week_1"
+            android:tag="week_1"
+            style="@style/WeekGroup" />
+
+    <ru.dogwalk.performer.UI.Widget.CalendarWeek
+            android:id="@+id/week_2"
+            android:tag="week_2"
+            style="@style/WeekGroup" />
+
+    <ru.dogwalk.performer.UI.Widget.CalendarWeek
+            android:id="@+id/week_3"
+            android:tag="week_3"
+            style="@style/WeekGroup" />
+
+    <ru.dogwalk.performer.UI.Widget.CalendarWeek
+            android:id="@+id/week_4"
+            android:tag="week_4"
+            style="@style/WeekGroup" />
+
+    <ru.dogwalk.performer.UI.Widget.CalendarWeek
+            android:id="@+id/week_5"
+            android:tag="week_5"
+            style="@style/WeekGroup" />
+
+    <ru.dogwalk.performer.UI.Widget.CalendarWeek
+            android:id="@+id/week_6"
+            android:tag="week_6"
+            style="@style/WeekGroup" />
+</LinearLayout>

@@ -1,1 +1,1 @@
-include ':app', ':DogProgressBar', ':CalendarModule'
+include ':app', ':DogProgressBar'

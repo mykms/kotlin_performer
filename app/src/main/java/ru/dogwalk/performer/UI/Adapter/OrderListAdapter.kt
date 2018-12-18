@@ -13,7 +13,7 @@ class OrderListAdapter(private val items: List<Order>) : RecyclerView.Adapter<Or
     private var orderClickListener: OrderClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_order, null)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_client_order, null)
         return OrderHolder(view)
     }
 

@@ -13,6 +13,7 @@ import retrofit2.http.*
 import ru.dogwalk.performer.BuildConfig
 import ru.dogwalk.performer.Model.Order
 import ru.dogwalk.performer.Model.Client
+import ru.dogwalk.performer.Model.ClientOrder
 import ru.dogwalk.performer.Model.Settings
 
 interface ApiMethods {
@@ -69,4 +70,7 @@ interface ApiMethods {
 
     @GET("user/orders")
     fun getOrders(@Query("hot") hot: Boolean): Call<List<Order>>
+
+    @GET("user/scheduled_services")//https://uapi.new-staging.dog-walk.ru/v2/user/scheduled_services?begins_at_gte=2018-11-10&ends_at_lte=2018-12-10
+    fun getOrders(@Query("begins_at_gte") begins_at_gte: String, @Query("ends_at_lte") ends_at_lte: String): Call<List<ClientOrder>>
 }
